@@ -1,0 +1,22 @@
+---
+layout: default
+title: Teaching
+permalink: /teaching/
+---
+
+<h1>Teaching</h1>
+
+{% assign grouped = site.teaching | group_by: 'institution' %}
+{% for group in grouped %}
+  <h2>{{ group.name }}</h2>
+  <ul>
+    {% for item in group.items %}
+      <li>
+        <a href="{{ item.url }}">{{ item.title }}</a>
+        {% if item.year %} ({{ item.year }}){% endif %}
+        {% if item.role %} – {{ item.role }}{% endif %}
+        {% if item.semester %} – {{ item.semester }}{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}

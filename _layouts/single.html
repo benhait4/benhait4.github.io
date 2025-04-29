@@ -1,0 +1,96 @@
+---
+# This is a layout for Jekyll collections (projects, teaching, research)
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .meta {
+      margin: 1.5rem 0;
+      color: #555;
+    }
+    .meta strong {
+      display: inline-block;
+      min-width: 80px;
+    }
+    .tags {
+      margin-top: 0.5rem;
+    }
+    .tags span {
+      background: #eee;
+      color: #333;
+      border-radius: 3px;
+      padding: 0.2em 0.7em;
+      margin-right: 0.3em;
+      font-size: 0.95em;
+      display: inline-block;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2.5rem;
+    }
+    .nav-links a {
+      color: #0078d7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>{{ page.title }}</h1>
+    <div class="meta">
+      {% if page.year %}<div><strong>Year:</strong> {{ page.year }}</div>{% endif %}
+      {% if page.client %}<div><strong>Client:</strong> {{ page.client }}</div>{% endif %}
+      {% if page.role %}<div><strong>Role:</strong> {{ page.role }}</div>{% endif %}
+      {% if page.location %}<div><strong>Location:</strong> {{ page.location }}</div>{% endif %}
+      {% if page.tags %}
+        <div class="tags">
+          <strong>Tags:</strong>
+          {% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    {% if page.hero %}
+      <img src="{{ page.hero | relative_url }}" alt="{{ page.title }} hero image" style="width:100%;max-width:900px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);margin-bottom:1.5rem;" />
+    {% endif %}
+    {% if page.gallery %}
+      <div class="gallery">
+        {% for image in page.gallery %}
+          <img src="{{ image | relative_url }}" alt="{{ page.title }} gallery image" loading="lazy" />
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="content">
+      {{ content }}
+    </div>
+    <div class="nav-links">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">&larr; Previous</a>
+      {% else %}
+        <span></span>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">Next &rarr;</a>
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>

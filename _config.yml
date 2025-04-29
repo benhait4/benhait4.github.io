@@ -1,0 +1,54 @@
+title: Ben Hait
+email: benhait.architect@email.com
+description: >-
+  Portfolio and website for Ben Hait, Architect
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
+
+# Owner information
+owner:
+  name: "Ben Hait"
+  email: "benhait.architect@email.com"
+
+# Theme
+remote_theme: "mmistakes/minimal-mistakes"
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+  teaching:
+    output: true
+    permalink: /teaching/:path/
+  research:
+    output: true
+    permalink: /research/:path/
+
+# Plugins
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: single
+      author_profile: true
+  - scope:
+      path: ""
+      type: "teaching"
+    values:
+      layout: single
+      author_profile: true
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: single
+      author_profile: true

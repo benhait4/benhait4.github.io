@@ -1,0 +1,11 @@
+{
+  "name": "benhait4-jekyll-site",
+  "version": "1.0.0",
+  "description": "Jekyll site for Ben Hait with Lighthouse audit script",
+  "scripts": {
+    "lighthouse": "lighthouse http://localhost:8080 --output html --output-path ./lighthouse-report.html --only-categories=performance,accessibility,best-practices,seo --chrome-flags=--headless"
+  },
+  "devDependencies": {
+    "lighthouse": "^12.0.0"
+  }
+}
